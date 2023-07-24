@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class Car {
 
     @Id
-    @Column(name = "car_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "car_id")
     private long id;
 
     @Column(name = "model")
@@ -16,8 +16,9 @@ public class Car {
     @Column(name = "series")
     private int series;
 
+
+
     @OneToOne(mappedBy = "car")
-    @PrimaryKeyJoinColumn
     private User carOwner;
 
     public Car() {
