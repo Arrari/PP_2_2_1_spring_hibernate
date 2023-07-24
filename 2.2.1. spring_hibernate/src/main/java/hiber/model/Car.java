@@ -8,6 +8,7 @@ public class Car {
 
     @Id
     @Column(name = "car_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "model")
@@ -16,6 +17,7 @@ public class Car {
     private int series;
 
     @OneToOne(mappedBy = "car")
+    @PrimaryKeyJoinColumn
     private User carOwner;
 
     public Car() {
