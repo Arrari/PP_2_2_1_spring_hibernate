@@ -20,8 +20,8 @@ public class User {
     private String email;
 
     //User
+    @PrimaryKeyJoinColumn
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_car_id")
     private Car car;
 
     public User() {
@@ -38,11 +38,19 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        car.setCarOwner(this);
+        this.car = car;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public void setId(Long id) {
@@ -81,6 +89,6 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", car=" + car +
-                '}';
+                "} \n";
     }
 }
